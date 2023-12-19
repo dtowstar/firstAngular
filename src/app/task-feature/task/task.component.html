@@ -1,0 +1,34 @@
+<div [style]="{ fontSize: fontSize + 'pt', color: color }">
+    類型：{{ type }}
+  </div>
+
+<div [class]="className">class類型：{{ type }}</div>
+<!-- <div [style.fontSize]="fontSize + 'pt'">類型：{{ type }}</div> -->
+<!-- <div [style.fontSize.pt]="fontSize">類型：{{ type }}</div> -->
+<div>Task 1 - {{ content }}</div>
+<div>待辦事項狀態：{{ state }}</div>
+<button
+  type="button"
+  [disabled]="state === 'None'"
+  (click)="onSetState('None')"
+>
+  未安排
+</button>
+<button
+  type="button"
+  [disabled]="state === 'Doing'"
+  (click)="onSetState('Doing')"
+>
+  進行中
+</button>
+<button
+  type="button"
+  [disabled]="state === 'Finish'"
+  (click)="onSetState('Finish')"
+>
+  已完成
+</button>
+<hr />
+<div>待辦事項總數：{{ totalCount }}</div>
+<div>已完成個數：{{ finishCount }}</div>
+<div>剩下待辦事項個數：{{ totalCount - finishCount }}</div>
