@@ -1,1 +1,31 @@
-<app-task></app-task>
+<div
+  *ngTemplateOutlet="
+    task;
+    context: { $implicit: 1, totalCount: 6, finishCount: 3 }
+  "
+></div>
+<br />
+<div
+  *ngTemplateOutlet="
+    task;
+    context: { $implicit: 2, totalCount: 2, finishCount: 1 }
+  "
+></div>
+
+<ng-template
+  #task
+  let-id
+  let-totalCount="totalCount"
+  let-finishCount="finishCount"
+>
+  <app-task
+    [id]="id"
+    [content]="content"
+    [type]="type"
+    [(state)]="state"
+  ></app-task>
+  <hr />
+  <div>待辦事項總數：{{ totalCount }}</div>
+  <div>已完成個數：{{ finishCount }}</div>
+  <div>剩下待辦事項個數：{{ totalCount - finishCount }}</div>
+</ng-template>

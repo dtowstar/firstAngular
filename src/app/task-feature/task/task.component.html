@@ -1,11 +1,11 @@
-<div [style]="{ fontSize: fontSize + 'pt', color: color }">
-    類型：{{ type }}
-  </div>
-
-<div [class]="className">class類型：{{ type }}</div>
-<!-- <div [style.fontSize]="fontSize + 'pt'">類型：{{ type }}</div> -->
-<!-- <div [style.fontSize.pt]="fontSize">類型：{{ type }}</div> -->
-<div>Task 1 - {{ content }}</div>
+<div
+  [class.home]="type === 'Home'"
+  [class.work]="type === 'Work'"
+  [class.other]="type === 'Other'"
+>
+  類型：{{ type }}
+</div>
+<div>{{ id }}. {{ content }}</div>
 <div>待辦事項狀態：{{ state }}</div>
 <button
   type="button"

@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
-
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  numberAttribute,
+} from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -8,23 +12,25 @@ import { Input } from '@angular/core';
   styleUrls: ['./task.component.css'],
 })
 export class TaskComponent {
-  content = '建立待辦事項元件';
+  @Input({ required: true, transform: numberAttribute })
+  id!: number;
 
-  state: 'None' | 'Doing' | 'Finish' = 'None';
+  @Input({ required: true })
+  content!: string;
 
-  type: 'Home' | 'Work' | 'Other' = 'Work';
+  @Input({ required: true })
+  type!: 'Home' | 'Work' | 'Other';
 
-  fontSize = 30;
-
-  className = 'home';
-
-  color = 'green';
+  @Input({ required: true })
+  state!: 'None' | 'Doing' | 'Finish';
+  @Output()
+  stateChange = new EventEmitter<'None' | 'Doing' | 'Finish'>();
 
   totalCount = 10;
 
   finishCount = 3;
 
   onSetState(state: 'None' | 'Doing' | 'Finish'): void {
-    this.state = state;
+    this.stateChange.emit(state);
   }
 }

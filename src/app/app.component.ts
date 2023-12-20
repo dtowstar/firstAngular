@@ -3,8 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'fristAngular';
+  content = '建立待辦事項元件';
+
+  type: 'Home' | 'Work' | 'Other' = 'Work';
+
+  state: 'None' | 'Doing' | 'Finish' = 'None';
+
+  onSetState(state: 'None' | 'Doing' | 'Finish'): void {
+    this.state = state;
+  }
 }
